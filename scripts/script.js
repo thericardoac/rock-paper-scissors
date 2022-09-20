@@ -1,5 +1,11 @@
 "use strict"
 
+let pcScore = 0;
+let playerScore = 0;
+let round;
+let totalRounds = 5; //You can define here how many rounds you want to play
+
+
 function getComputerChoice() {
     //Generates a random number between 1 and 3. 1=Rock, 2=Paper, 3=Scissors
     let weaponNumber = Math.floor(Math.random() * 3 + 1);
@@ -26,8 +32,9 @@ function getPlayerChoice() {
     let weapon;
     let isValidWeapon = false;
 
+    //Weapon remains false until player inputs a correct weapon
     do {
-        weapon = prompt("Rock, Paper, Scissors game!\nType your weapon to play: \n\n 1. Rock\n 2. Paper\n 3. Scissors\n");
+        weapon = prompt(("Rock, Paper, Scissors! -- Type your weapon to play: \n\n 1. Rock\n 2. Paper\n 3. Scissors\n\nRound #" + round + "\n"));
         weapon = weapon.toLowerCase();
 
         if (weapon == "rock") {
@@ -45,28 +52,52 @@ function getPlayerChoice() {
         
     } while (!isValidWeapon);
     
-    return weapon
+    return weapon;
 }
 
 
 function playRound(pcChoice, playerChoice) {
+    //Determines the round winner and increases the score accordingly
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
         (playerChoice == "paper" && pcChoice == "rock") ||
         (playerChoice == "scissors" && pcChoice == "paper")) {
-        
-        return ("You Won!! -- You: " + playerChoice + ", beat IA: " + pcChoice + ".");
+
+        playerScore += 1;        
+        return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat IA: " + pcChoice + ".");
 
     } else if ((playerChoice == "rock" && pcChoice == "paper") || 
         (playerChoice == "paper" && pcChoice == "scissors") || 
         (playerChoice == "scissors" && pcChoice == "rock")) {
-        
-        return ("You Lost!! -- IA: " + pcChoice + ", beats You: " + playerChoice + ".");
 
-    } else {
+        pcScore += 1;
+        return ("Round #" + round + ". You LOST! --- IA: " + pcChoice + ", beats You: " + playerChoice + ".");
 
-        return ("It's a Tie!! - IA: " + pcChoice + ", You: " + playerChoice + ".");
+    } else {        
+        return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", IA: " + pcChoice + ".");
     }
 }
 
 
-console.log(playRound(getComputerChoice(), getPlayerChoice()));
+function game(){
+    //Plays n rounds of the game, keeps the score.
+    for(round = 1; round <= totalRounds; round++){        
+        console.log(playRound(getComputerChoice(), getPlayerChoice()));
+        console.log("Current score:\nYou: " + playerScore + " --- PC: " + pcScore + "\n\n");             
+    }
+    
+    //Defines the winner of the match.
+    if (playerScore > pcScore) {
+        console.log("You WON the Match, GG!!");
+
+    } else if (pcScore > playerScore) {
+        console.log("You LOST the Match. Better luck next time!");
+
+    } else {
+        console.log("The Match is a Tie. Want a rematch?");
+    }
+    
+    console.log("Final score:\nYou: " + playerScore + " --- PC: " + pcScore + ".");
+}
+
+//Starts the match
+game();
