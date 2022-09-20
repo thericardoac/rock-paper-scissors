@@ -21,6 +21,7 @@ function getComputerChoice() {
     return weapon;
 }
 
+
 function getPlayerChoice() {
     let weapon;
     let isValidWeapon = false;
@@ -46,3 +47,26 @@ function getPlayerChoice() {
     
     return weapon
 }
+
+
+function playRound(pcChoice, playerChoice) {
+    if ((playerChoice == "rock" && pcChoice == "scissors") || 
+        (playerChoice == "paper" && pcChoice == "rock") ||
+        (playerChoice == "scissors" && pcChoice == "paper")) {
+        
+        return ("You Won!! -- You: " + playerChoice + ", beat IA: " + pcChoice + ".");
+
+    } else if ((playerChoice == "rock" && pcChoice == "paper") || 
+        (playerChoice == "paper" && pcChoice == "scissors") || 
+        (playerChoice == "scissors" && pcChoice == "rock")) {
+        
+        return ("You Lost!! -- IA: " + pcChoice + ", beats You: " + playerChoice + ".");
+
+    } else {
+
+        return ("It's a Tie!! - IA: " + pcChoice + ", You: " + playerChoice + ".");
+    }
+}
+
+
+console.log(playRound(getComputerChoice(), getPlayerChoice()));
