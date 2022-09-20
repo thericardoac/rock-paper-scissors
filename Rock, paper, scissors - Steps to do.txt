@@ -1,0 +1,12 @@
+Rock, paper, scissors game - Steps to do
+
+OK! 1. Using a function getComputerChoice, the PC chooses its weapon to play.
+    A random number between 1 and 3.
+
+OK! 2. Using a function, the game asks the HUMAN player to choose its weapon. Input the word "Rock", "Paper" or "Scissors".
+    Case insensitive.
+    a. Verify input is NOT a different text than the options given.
+
+3. Using a function playRound, receive PC and HUMAN player choices, declare the winner and return the respective message.
+
+4. Create a function that calls the playRound, keeps score and declare final winner. Use a Loop to play 5 rounds.
