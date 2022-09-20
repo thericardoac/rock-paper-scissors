@@ -63,26 +63,26 @@ function playRound(pcChoice, playerChoice) {
         (playerChoice == "scissors" && pcChoice == "paper")) {
 
         playerScore += 1;        
-        return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat IA: " + pcChoice + ".");
+        return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat AI: " + pcChoice + ".");
 
     } else if ((playerChoice == "rock" && pcChoice == "paper") || 
         (playerChoice == "paper" && pcChoice == "scissors") || 
         (playerChoice == "scissors" && pcChoice == "rock")) {
 
         pcScore += 1;
-        return ("Round #" + round + ". You LOST! --- IA: " + pcChoice + ", beats You: " + playerChoice + ".");
+        return ("Round #" + round + ". You LOST! --- AI: " + pcChoice + ", beats You: " + playerChoice + ".");
 
     } else {        
-        return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", IA: " + pcChoice + ".");
+        return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", equals AI: " + pcChoice + ".");
     }
 }
 
 
 function game(){
-    //Plays n rounds of the game, keeps the score.
+    //Plays n rounds of the game, shows the current score.
     for(round = 1; round <= totalRounds; round++){        
         console.log(playRound(getComputerChoice(), getPlayerChoice()));
-        console.log("Current score:\nYou: " + playerScore + " --- PC: " + pcScore + "\n\n");             
+        console.log("Current score:\nYou: " + playerScore + " --- AI: " + pcScore + "\n\n");             
     }
     
     //Defines the winner of the match.
@@ -96,7 +96,7 @@ function game(){
         console.log("The Match is a Tie. Want a rematch?");
     }
     
-    console.log("Final score:\nYou: " + playerScore + " --- PC: " + pcScore + ".");
+    console.log("FINAL score:\nYou: " + playerScore + " --- AI: " + pcScore + ".");
 }
 
 //Starts the match
