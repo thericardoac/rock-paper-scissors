@@ -9,4 +9,4 @@ OK! 2. Using a function, the game asks the HUMAN player to choose its weapon. In
 
 OK! 3. Using a function playRound, receive PC and HUMAN player choices, declare the winner and return the respective message.
 
-4. Create a function that calls the playRound, keeps score and declare final winner. Use a Loop to play 5 rounds.
+OK! 4. Create a function that calls the playRound, keeps score and declare final winner. Use a Loop to play 5 rounds. 
