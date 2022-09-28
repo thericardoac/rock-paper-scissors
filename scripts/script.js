@@ -1,9 +1,11 @@
 "use strict"
 
+let round = 0;
 let pcScore = 0;
 let playerScore = 0;
-let round;
-let totalRounds = 5; //You can define here how many rounds you want to play
+
+const pageBody = document.querySelector("body");
+//let totalRounds = 5; //You can define here how many rounds you want to play. Used by game function.
 
 
 function getComputerChoice() {
@@ -23,7 +25,7 @@ function getComputerChoice() {
         case 3:
             weapon = "scissors";            
     }
-
+    
     return weapon;
 }
 
@@ -56,24 +58,27 @@ function getPlayerChoice() {
 }
 
 
-function playRound(pcChoice, playerChoice) {
-    //Determines the round winner and increases the score accordingly
+function playRound(pcChoice, playerChoice) {    
+    //Determines the round winner
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
         (playerChoice == "paper" && pcChoice == "rock") ||
         (playerChoice == "scissors" && pcChoice == "paper")) {
 
-        playerScore += 1;        
-        return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat AI: " + pcChoice + ".");
+        //playerScore += 1;        
+        //return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat AI: " + pcChoice + ".");
+        return "player";
 
     } else if ((playerChoice == "rock" && pcChoice == "paper") || 
         (playerChoice == "paper" && pcChoice == "scissors") || 
         (playerChoice == "scissors" && pcChoice == "rock")) {
 
-        pcScore += 1;
-        return ("Round #" + round + ". You LOST! --- AI: " + pcChoice + ", beats You: " + playerChoice + ".");
+        //pcScore += 1;
+        //return ("Round #" + round + ". You LOST! --- AI: " + pcChoice + ", beats You: " + playerChoice + ".");
+        return "pc";
 
     } else {        
-        return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", equals AI: " + pcChoice + ".");
+        //return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", equals AI: " + pcChoice + ".");
+        return "tie";
     }
 }
 
@@ -99,5 +104,80 @@ function game(){
     console.log("FINAL score:\nYou: " + playerScore + " --- AI: " + pcScore + ".");
 }
 
-//Starts the match
-game();
+
+function displayRoundNumber() {    
+    round += 1;
+    let roundTagCount = document.querySelectorAll("#round-title").length;    
+    let roundTag;
+
+    if (roundTagCount == 0) {
+        roundTag = document.createElement("h2");
+        roundTag.id = "round-title";
+        roundTag.textContent = "Round #" + round;
+        pageBody.appendChild(roundTag);
+
+    } else {
+        roundTag = document.querySelector("#round-title");
+        roundTag.textContent = "Round #" + round;
+    }
+}
+
+
+function displayRoundResult(pcChoice, playerChoice, roundWinner) {
+    let resultText = "Round Result: ";
+
+    if (roundWinner == "player") {
+        resultText += "PLAYER wins! | Player (" + playerChoice + ") beats PC (" + pcChoice + ").";
+
+    } else if (roundWinner == "pc") {
+        resultText += "PC Wins! | PC (" + pcChoice + ") beats Player (" + playerChoice + ").";
+
+    } else {
+        resultText += "It's a TIE! | Player (" + playerChoice + ") draws the same as PC (" + pcChoice + ").";
+    }    
+
+    let resultTagCount = document.querySelectorAll("#round-result").length;
+    let resultTag;
+    
+    if (resultTagCount == 0) {
+        resultTag = document.createElement("p");
+        resultTag.id = "round-result"; 
+        resultTag.textContent = resultText;
+        pageBody.appendChild(resultTag);
+
+    } else {
+        resultTag = document.querySelector("#round-result");
+        resultTag.textContent = resultText;
+    }
+}
+
+
+//Starts the match - Use only with Console implementation
+//game();
+
+const btnRock = document.querySelector("#rock-btn");
+const btnPaper = document.querySelector("#paper-btn");
+const btnScissors = document.querySelector("#scissors-btn");
+
+btnRock.addEventListener('click', function(){
+    // Displays the round number on the page
+    displayRoundNumber();
+
+    // Saves the computer weapon of choice
+    let pcChoice = getComputerChoice();
+    
+    // Plays the round using computer and player choices
+    let roundWinner = playRound(pcChoice, "rock");    
+
+    // Displays result of the round on the page
+    displayRoundResult(pcChoice, "rock", roundWinner);
+});
+
+
+// btnPaper.addEventListener('click', function(){
+//     console.log(playRound(getComputerChoice(), "paper"));
+// });
+
+// btnScissors.addEventListener('click', function(){
+//     console.log(playRound(getComputerChoice(), "scissors"));
+// });
