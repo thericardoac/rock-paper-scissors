@@ -1,10 +1,10 @@
 Rock, paper, scissors game - Steps to add UI
 
-1. For now, remove the 5 rounds way to play.
+OK! - 1. For now, remove the 5 rounds way to play.
 
-2. Create 3 buttons, 1 per each selection.
+OK! - 2. Create 3 buttons, 1 per each selection.
 Every button calls the playRound function with the correct playerSelection argument.
 
-3. Add a div for displaying results adn change console.logs for DOM methods.
+OK! - 3. Add a div for displaying results and change console.logs for DOM methods.
 
 4. Display the current score of the match and declare as winner the first player to reach 5 points.
