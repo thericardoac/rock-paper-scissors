@@ -64,7 +64,7 @@ function playRound(pcChoice, playerChoice) {
         (playerChoice == "paper" && pcChoice == "rock") ||
         (playerChoice == "scissors" && pcChoice == "paper")) {
 
-        //playerScore += 1;        
+        playerScore += 1;        
         //return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat AI: " + pcChoice + ".");
         return "player";
 
@@ -72,7 +72,7 @@ function playRound(pcChoice, playerChoice) {
         (playerChoice == "paper" && pcChoice == "scissors") || 
         (playerChoice == "scissors" && pcChoice == "rock")) {
 
-        //pcScore += 1;
+        pcScore += 1;
         //return ("Round #" + round + ". You LOST! --- AI: " + pcChoice + ", beats You: " + playerChoice + ".");
         return "pc";
 
@@ -152,6 +152,25 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
 }
 
 
+function displayScore(pcScore, playerScore) {
+    let scoreText = "Match Score - PLAYER: " + playerScore + " - VS - PC: " + pcScore;
+    
+    let scoreTagCount = document.querySelectorAll("#match-score").length;
+    let scoreTag;
+
+    if (scoreTagCount == 0) {
+        scoreTag = document.createElement("h2");
+        scoreTag.id = "match-score";
+        scoreTag.textContent = scoreText;
+        pageBody.appendChild(scoreTag);
+
+    } else {
+        scoreTag = document.querySelector("#match-score");
+        scoreTag.textContent = scoreText;
+    }
+}
+
+
 //Starts the match - Use only with Console implementation
 //game();
 
@@ -171,6 +190,9 @@ btnRock.addEventListener('click', function(){
 
     // Displays result of the round on the page
     displayRoundResult(pcChoice, "rock", roundWinner);
+
+    // Displays the score of the match
+    displayScore(pcScore, playerScore);
 });
 
 
