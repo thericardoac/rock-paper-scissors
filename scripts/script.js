@@ -33,36 +33,6 @@ function getComputerChoice() {
     return weapon;
 }
 
-
-// Gets player weapon of choice. Console implementation only.
-// function getPlayerChoice() {
-//     let weapon;
-//     let isValidWeapon = false;
-
-//     //Weapon remains false until player inputs a correct weapon
-//     do {
-//         weapon = prompt(("Rock, Paper, Scissors! -- Type your weapon to play: \n\n 1. Rock\n 2. Paper\n 3. Scissors\n\nRound #" + round + "\n"));
-//         weapon = weapon.toLowerCase();
-
-//         if (weapon == "rock") {
-//             isValidWeapon = true;
-
-//         } else if (weapon == "paper") {
-//             isValidWeapon = true;
-
-//         } else if (weapon == "scissors") {
-//             isValidWeapon = true;
-
-//         } else {
-//             alert("Please, type a correct weapon from the list!");
-//         }
-        
-//     } while (!isValidWeapon);
-    
-//     return weapon;
-// }
-
-
 // Plays a round of the game, receives Player and PC choices.
 function playRound(pcChoice, playerChoice) {    
     //Determines the round winner
@@ -88,30 +58,6 @@ function playRound(pcChoice, playerChoice) {
     }
 }
 
-
-// Plays the game and declares a winner. Console implementation only.
-// function game(){
-//     //Plays n rounds of the game, shows the current score.
-//     for(round = 1; round <= MAX_ROUNDS; round++){        
-//         console.log(playRound(getComputerChoice(), getPlayerChoice()));
-//         console.log("Current score:\nYou: " + playerScore + " --- AI: " + pcScore + "\n\n");             
-//     }
-    
-//     //Defines the winner of the match.
-//     if (playerScore > pcScore) {
-//         console.log("You WON the Match, GG!!");
-
-//     } else if (pcScore > playerScore) {
-//         console.log("You LOST the Match. Better luck next time!");
-
-//     } else {
-//         console.log("The Match is a Tie. Want a rematch?");
-//     }
-    
-//     console.log("FINAL score:\nYou: " + playerScore + " --- AI: " + pcScore + ".");
-// }
-
-
 // Renders the round number on the web page.
 function displayRoundNumber() {
     round += 1;
@@ -132,7 +78,6 @@ function displayRoundNumber() {
         roundTag.textContent = "Round #" + round;
     }
 }
-
 
 // Renders the result of the round on the web page.
 function displayRoundResult(pcChoice, playerChoice, roundWinner) {
@@ -166,7 +111,6 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
     }
 }
 
-
 // Renders the current match score on the web page.
 function displayScore() {
     let scoreText = "Match Score - PLAYER: " + playerScore + " - VS - PC: " + pcScore;
@@ -187,7 +131,6 @@ function displayScore() {
         scoreTag.textContent = scoreText;
     }
 }
-
 
 // Renders the winner text on the page and adds a play again button.
 function declareWinner() {
@@ -238,7 +181,6 @@ function playAgain() {
         btnPlayAgain.remove();
     }    
 }
-
 
 
 // *************************** RUNTIME STARTS HERE ************************************
