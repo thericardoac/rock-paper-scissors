@@ -4,10 +4,15 @@
 let round = 0;
 let pcScore = 0;
 let playerScore = 0;
-const SCORE_LIMIT = 5; //Define here the points a player needs to win the match.
+const SCORE_LIMIT = 5; // Defines here the points a player needs to win the match.
 
-//Creates an object based on the body of the document.
+//Creates an object with the body of the document.
 const pageBody = document.querySelector("body");
+
+// Adds game buttons.
+const btnRock = document.querySelector("#rock-btn");
+const btnPaper = document.querySelector("#paper-btn");
+const btnScissors = document.querySelector("#scissors-btn");
 
 
 // ************************* FUNCTION DECLARATIONS ********************************
@@ -40,20 +45,17 @@ function playRound(pcChoice, playerChoice) {
         (playerChoice == "paper" && pcChoice == "rock") ||
         (playerChoice == "scissors" && pcChoice == "paper")) {
 
-        playerScore += 1;        
-        //return ("Round #" + round + ". You WON! --- You: " + playerChoice + ", beat AI: " + pcChoice + ".");
+        playerScore += 1;                
         return "player";
 
     } else if ((playerChoice == "rock" && pcChoice == "paper") || 
         (playerChoice == "paper" && pcChoice == "scissors") || 
         (playerChoice == "scissors" && pcChoice == "rock")) {
 
-        pcScore += 1;
-        //return ("Round #" + round + ". You LOST! --- AI: " + pcChoice + ", beats You: " + playerChoice + ".");
+        pcScore += 1;        
         return "pc";
 
-    } else {        
-        //return ("Round #" + round + ". It's a TIE! --- You: " + playerChoice + ", equals AI: " + pcChoice + ".");
+    } else {                
         return "tie";
     }
 }
@@ -182,17 +184,8 @@ function playAgain() {
     }    
 }
 
-
-// *************************** RUNTIME STARTS HERE ************************************
-//Starts the match - Use only with Console implementation.
-//game();
-
-// Adds game buttons.
-const btnRock = document.querySelector("#rock-btn");
-const btnPaper = document.querySelector("#paper-btn");
-const btnScissors = document.querySelector("#scissors-btn");
-
-// Rock button.
+// *************************** UI BUTTONS *********************************
+// ROCK BUTTON.
 btnRock.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
@@ -208,7 +201,7 @@ btnRock.addEventListener('click', function(){
     }    
 });
 
-// Paper button.
+// ROCK BUTTON.
 btnPaper.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
@@ -225,7 +218,7 @@ btnPaper.addEventListener('click', function(){
     }
 });
 
-// Scissors button
+// SCISSORS BUTTON
 btnScissors.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
