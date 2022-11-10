@@ -5,14 +5,13 @@ let round = 0;
 let pcScore = 0;
 let playerScore = 0;
 const SCORE_LIMIT = 5; //Define here the points a player needs to win the match.
-//const MAX_ROUNDS = 5; //Define here how many rounds you want to play. Used by game() function.
 
 //Creates an object based on the body of the document.
 const pageBody = document.querySelector("body");
 
 
 // ************************* FUNCTION DECLARATIONS ********************************
-// Randomly generates the PC weapon of choice.
+// Randomly generates the AI weapon of choice.
 function getComputerChoice() {
     //Generates a random number between 1 and 3. 1=Rock, 2=Paper, 3=Scissors
     let weaponNumber = Math.floor(Math.random() * 3 + 1);
@@ -36,32 +35,32 @@ function getComputerChoice() {
 
 
 // Gets player weapon of choice. Console implementation only.
-function getPlayerChoice() {
-    let weapon;
-    let isValidWeapon = false;
+// function getPlayerChoice() {
+//     let weapon;
+//     let isValidWeapon = false;
 
-    //Weapon remains false until player inputs a correct weapon
-    do {
-        weapon = prompt(("Rock, Paper, Scissors! -- Type your weapon to play: \n\n 1. Rock\n 2. Paper\n 3. Scissors\n\nRound #" + round + "\n"));
-        weapon = weapon.toLowerCase();
+//     //Weapon remains false until player inputs a correct weapon
+//     do {
+//         weapon = prompt(("Rock, Paper, Scissors! -- Type your weapon to play: \n\n 1. Rock\n 2. Paper\n 3. Scissors\n\nRound #" + round + "\n"));
+//         weapon = weapon.toLowerCase();
 
-        if (weapon == "rock") {
-            isValidWeapon = true;
+//         if (weapon == "rock") {
+//             isValidWeapon = true;
 
-        } else if (weapon == "paper") {
-            isValidWeapon = true;
+//         } else if (weapon == "paper") {
+//             isValidWeapon = true;
 
-        } else if (weapon == "scissors") {
-            isValidWeapon = true;
+//         } else if (weapon == "scissors") {
+//             isValidWeapon = true;
 
-        } else {
-            alert("Please, type a correct weapon from the list!");
-        }
+//         } else {
+//             alert("Please, type a correct weapon from the list!");
+//         }
         
-    } while (!isValidWeapon);
+//     } while (!isValidWeapon);
     
-    return weapon;
-}
+//     return weapon;
+// }
 
 
 // Plays a round of the game, receives Player and PC choices.
@@ -91,26 +90,26 @@ function playRound(pcChoice, playerChoice) {
 
 
 // Plays the game and declares a winner. Console implementation only.
-function game(){
-    //Plays n rounds of the game, shows the current score.
-    for(round = 1; round <= MAX_ROUNDS; round++){        
-        console.log(playRound(getComputerChoice(), getPlayerChoice()));
-        console.log("Current score:\nYou: " + playerScore + " --- AI: " + pcScore + "\n\n");             
-    }
+// function game(){
+//     //Plays n rounds of the game, shows the current score.
+//     for(round = 1; round <= MAX_ROUNDS; round++){        
+//         console.log(playRound(getComputerChoice(), getPlayerChoice()));
+//         console.log("Current score:\nYou: " + playerScore + " --- AI: " + pcScore + "\n\n");             
+//     }
     
-    //Defines the winner of the match.
-    if (playerScore > pcScore) {
-        console.log("You WON the Match, GG!!");
+//     //Defines the winner of the match.
+//     if (playerScore > pcScore) {
+//         console.log("You WON the Match, GG!!");
 
-    } else if (pcScore > playerScore) {
-        console.log("You LOST the Match. Better luck next time!");
+//     } else if (pcScore > playerScore) {
+//         console.log("You LOST the Match. Better luck next time!");
 
-    } else {
-        console.log("The Match is a Tie. Want a rematch?");
-    }
+//     } else {
+//         console.log("The Match is a Tie. Want a rematch?");
+//     }
     
-    console.log("FINAL score:\nYou: " + playerScore + " --- AI: " + pcScore + ".");
-}
+//     console.log("FINAL score:\nYou: " + playerScore + " --- AI: " + pcScore + ".");
+// }
 
 
 // Renders the round number on the web page.
@@ -254,27 +253,15 @@ const btnScissors = document.querySelector("#scissors-btn");
 // Rock button.
 btnRock.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {        
-        // play again
+    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
         playAgain();
 
-    } else {
-        // Displays the round number on the page.
-        displayRoundNumber();
-
-        // Saves the computer weapon of choice.
+    } else {        
+        displayRoundNumber();        
         let pcChoice = getComputerChoice();
-        
-        // Plays the round using computer and player choices.
-        let roundWinner = playRound(pcChoice, "rock");    
-
-        // Displays result of the round on the web page.
-        displayRoundResult(pcChoice, "rock", roundWinner);
-
-        // Displays the score of the match on the web page.
+        let roundWinner = playRound(pcChoice, "rock");        
+        displayRoundResult(pcChoice, "rock", roundWinner);        
         displayScore();
-
-        // Declares the winner and in case the match is over, calls the playAgain() function.
         declareWinner();
     }    
 });
@@ -282,27 +269,16 @@ btnRock.addEventListener('click', function(){
 // Paper button.
 btnPaper.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {        
-        // play again
+    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
         playAgain();
 
     } else {
-        // Displays the round number on the page.
-        displayRoundNumber();
-
-        // Saves the computer weapon of choice.
-        let pcChoice = getComputerChoice();
         
-        // Plays the round using computer and player choices.
+        displayRoundNumber();
+        let pcChoice = getComputerChoice();
         let roundWinner = playRound(pcChoice, "paper");    
-
-        // Displays result of the round on the web page.
         displayRoundResult(pcChoice, "paper", roundWinner);
-
-        // Displays the score of the match on the web page.
         displayScore();
-
-        // Declares the winner and in case the match is over, calls the playAgain() function.
         declareWinner();
     }
 });
@@ -310,27 +286,15 @@ btnPaper.addEventListener('click', function(){
 // Scissors button
 btnScissors.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {        
-        // play again
+    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
         playAgain();
 
-    } else {
-        // Displays the round number on the page.
+    } else {        
         displayRoundNumber();
-
-        // Saves the computer weapon of choice.
         let pcChoice = getComputerChoice();
-        
-        // Plays the round using computer and player choices.
         let roundWinner = playRound(pcChoice, "scissors");    
-
-        // Displays result of the round on the web page.
         displayRoundResult(pcChoice, "scissors", roundWinner);
-
-        // Displays the score of the match on the web page.
         displayScore();
-
-        // Declares the winner and in case the match is over, calls the playAgain() function.
         declareWinner();
     }
 });
