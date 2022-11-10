@@ -1,1 +1,2 @@
-# rock-paper-scissors-game, Now with UI!
+# Rock, Paper, Scissors, Shoot!
+The classic game, returns. Now with a redefined UI!
