@@ -38,8 +38,7 @@ function getComputerChoice() {
     return weapon;
 }
 
-// Plays a round of the game, receives Player and PC choices.
-//Determines the round winner
+// Receives Player and PC choices. Determines the round winner
 function declareRoundWinner(pcChoice, playerChoice) {        
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
         (playerChoice == "paper" && pcChoice == "rock") ||
@@ -82,8 +81,7 @@ function displayRoundNumber() {
 }
 
 // Renders the result of the round on the web page.
-function displayRoundResult(pcChoice, playerChoice, roundWinner) {
-    //Updates the round result text based on the result
+function displayRoundResult(pcChoice, playerChoice, roundWinner) {    
     let resultText = "Round Result: ";
 
     if (roundWinner == "player") {
@@ -141,7 +139,7 @@ function declareMatchWinner() {
         let scoreTag = document.querySelector("#match-score");
         let winner;        
 
-        // Declares the winner
+        // Declares the match winner
         if (playerScore == SCORE_LIMIT) {
             winner = "Player";            
 
@@ -163,6 +161,16 @@ function declareMatchWinner() {
             askToPlayAgain();
         });
     }
+}
+
+// Plays a round of the game.
+function playRound() {            
+    displayRoundNumber();      
+    let pcChoice = getComputerChoice();
+    let roundWinner = declareRoundWinner(pcChoice, "rock");        
+    displayRoundResult(pcChoice, "rock", roundWinner);        
+    displayScore();
+    declareMatchWinner();    
 }
 
 // Resets the round number, the scores and clears the web page.
@@ -187,18 +195,7 @@ function askToPlayAgain() {
 // *************************** UI BUTTONS *********************************
 // ROCK BUTTON.
 btnRock.addEventListener('click', function(){
-    //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-        askToPlayAgain();
-
-    } else {        
-        displayRoundNumber();        
-        let pcChoice = getComputerChoice();
-        let roundWinner = declareRoundWinner(pcChoice, "rock");        
-        displayRoundResult(pcChoice, "rock", roundWinner);        
-        displayScore();
-        declareMatchWinner();
-    }    
+    playRound();
 });
 
 // // PAPER BUTTON.
