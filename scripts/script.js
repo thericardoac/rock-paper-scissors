@@ -39,8 +39,8 @@ function getComputerChoice() {
 }
 
 // Plays a round of the game, receives Player and PC choices.
-function playRound(pcChoice, playerChoice) {    
-    //Determines the round winner
+//Determines the round winner
+function declareRoundWinner(pcChoice, playerChoice) {        
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
         (playerChoice == "paper" && pcChoice == "rock") ||
         (playerChoice == "scissors" && pcChoice == "paper")) {
@@ -135,7 +135,7 @@ function displayScore() {
 }
 
 // Renders the winner text on the page and adds a play again button.
-function declareWinner() {
+function declareMatchWinner() {
     // Checks if player or PC have reached the score limit.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {
         let scoreTag = document.querySelector("#match-score");
@@ -160,13 +160,13 @@ function declareWinner() {
         pageBody.appendChild(btnPlayAgain);
 
         btnPlayAgain.addEventListener("click", function(){
-            playAgain();
+            askToPlayAgain();
         });
     }
 }
 
 // Resets the round number, the scores and clears the web page.
-function playAgain() {
+function askToPlayAgain() {
     if (confirm("Do you want to play again?")) {
         round = 0;
         playerScore = 0;
@@ -189,47 +189,47 @@ function playAgain() {
 btnRock.addEventListener('click', function(){
     //If the score limit is reached, asks to play again.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-        playAgain();
+        askToPlayAgain();
 
     } else {        
         displayRoundNumber();        
         let pcChoice = getComputerChoice();
-        let roundWinner = playRound(pcChoice, "rock");        
+        let roundWinner = declareRoundWinner(pcChoice, "rock");        
         displayRoundResult(pcChoice, "rock", roundWinner);        
         displayScore();
-        declareWinner();
+        declareMatchWinner();
     }    
 });
 
-// ROCK BUTTON.
-btnPaper.addEventListener('click', function(){
-    //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-        playAgain();
+// // PAPER BUTTON.
+// btnPaper.addEventListener('click', function(){
+//     //If the score limit is reached, asks to play again.
+//     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
+//         playAgain();
 
-    } else {
+//     } else {
         
-        displayRoundNumber();
-        let pcChoice = getComputerChoice();
-        let roundWinner = playRound(pcChoice, "paper");    
-        displayRoundResult(pcChoice, "paper", roundWinner);
-        displayScore();
-        declareWinner();
-    }
-});
+//         displayRoundNumber();
+//         let pcChoice = getComputerChoice();
+//         let roundWinner = playRound(pcChoice, "paper");    
+//         displayRoundResult(pcChoice, "paper", roundWinner);
+//         displayScore();
+//         declareWinner();
+//     }
+// });
 
-// SCISSORS BUTTON
-btnScissors.addEventListener('click', function(){
-    //If the score limit is reached, asks to play again.
-    if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-        playAgain();
+// // SCISSORS BUTTON
+// btnScissors.addEventListener('click', function(){
+//     //If the score limit is reached, asks to play again.
+//     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
+//         playAgain();
 
-    } else {        
-        displayRoundNumber();
-        let pcChoice = getComputerChoice();
-        let roundWinner = playRound(pcChoice, "scissors");    
-        displayRoundResult(pcChoice, "scissors", roundWinner);
-        displayScore();
-        declareWinner();
-    }
-});
+//     } else {        
+//         displayRoundNumber();
+//         let pcChoice = getComputerChoice();
+//         let roundWinner = playRound(pcChoice, "scissors");    
+//         displayRoundResult(pcChoice, "scissors", roundWinner);
+//         displayScore();
+//         declareWinner();
+//     }
+// });
