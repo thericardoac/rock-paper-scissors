@@ -125,6 +125,16 @@ body {
     width: 100px;
     height: 100px;
     padding: 5px;
+    background-color: #b1b9c7;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+.weapon-btn:hover {
+    background-color: #256093;
+    transform: scale(1.1);
 }
 
 .weapon-img {    
