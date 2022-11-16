@@ -8,6 +8,7 @@ const SCORE_LIMIT = 5; // Defines here the points a player needs to win the matc
 
 //Creates an object with the body of the document.
 const pageBody = document.querySelector("body");
+const sectionGameBoard = document.querySelector("#game-board");
 
 // Adds game buttons.
 const btnRock = document.querySelector("#rock-btn");
@@ -63,39 +64,45 @@ function declareRoundWinner(pcChoice, playerChoice) {
 function displayRoundNumber() {
     round += 1;
     
-    // Checks if there are is a tag displaying the round number.
-    // If not, displays the tag. If there is, updates the text.
-    let roundTagCount = document.querySelectorAll("#round-title").length;    
-    let roundTag;
+    // Checks if there is a tag displaying the round number.
+    // If not, Creates a round-summary div and inserts a span with round title.
+    let roundTitleCount = sectionGameBoard.querySelectorAll("#round-title").length;    
+    let roundTitle;
     
-    if (roundTagCount == 0) {
-        roundTag = document.createElement("h2");
-        roundTag.id = "round-title";
-        roundTag.textContent = "Round #" + round;
-        pageBody.appendChild(roundTag);
+    if (roundTitleCount == 0) {
+        let divMatchScore = document.querySelector("#match-score");
 
-    } else {
-        roundTag = document.querySelector("#round-title");
-        roundTag.textContent = "Round #" + round;
+        let roundSummary = document.createElement("div");
+        roundSummary.id = "round-summary";
+        divMatchScore.after(roundSummary);
+
+        roundTitle = document.createElement("span");
+        roundTitle.id = "round-title";
+        roundTitle.className = "funny-font round-description";        
+        roundSummary.appendChild(roundTitle);
     }
+
+    //Updates round title.
+    roundTitle = document.querySelector("#round-title");
+    roundTitle.textContent = "Round #" + round + " result";
 }
 
 // Renders the result of the round on the web page.
-function displayRoundResult(pcChoice, playerChoice, roundWinner) {    
-    let resultText = "Round Result: ";
+function displayRoundResult(pcChoice, playerChoice, roundWinner) {
+    let resultText;
 
     if (roundWinner == "player") {
-        resultText += "PLAYER scores! | Player (" + playerChoice + ") beats PC (" + pcChoice + ").";
+        resultText += "YOU scored a point! - " + playerChoice + " beats " + pcChoice + ".";
 
     } else if (roundWinner == "pc") {
-        resultText += "PC scores! | PC (" + pcChoice + ") beats Player (" + playerChoice + ").";
+        resultText += "A.I. scored a point! - " + pcChoice + " beats " + playerChoice + ".";
 
     } else {
-        resultText += "It's a TIE! | Player (" + playerChoice + ") draws the same as PC (" + pcChoice + ").";
+        resultText += "It's a TIE! - You drew " + playerChoice + ", the A.I. also drew " + pcChoice + ".";
     }   
     
-    // Checks if there are is a tag displaying the round result.
-    // If not, displays the tag. If there is, updates the text.
+    // Checks if there are is a tag displaying the round number.    
+    // If not, displays the tag. If there is, updates the text.    
     let resultTagCount = document.querySelectorAll("#round-result").length;
     let resultTag;
     
@@ -169,8 +176,8 @@ function playRound() {
     let pcChoice = getComputerChoice();
     let roundWinner = declareRoundWinner(pcChoice, "rock");        
     displayRoundResult(pcChoice, "rock", roundWinner);        
-    displayScore();
-    declareMatchWinner();    
+    // displayScore();
+    // declareMatchWinner();  
 }
 
 // Resets the round number, the scores and clears the web page.
