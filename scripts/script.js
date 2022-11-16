@@ -92,30 +92,31 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
     let resultText;
 
     if (roundWinner == "player") {
-        resultText += "YOU scored a point! - " + playerChoice + " beats " + pcChoice + ".";
+        resultText = "YOU scored a point! " + playerChoice + " beats " + pcChoice + ".";
 
     } else if (roundWinner == "pc") {
-        resultText += "A.I. scored a point! - " + pcChoice + " beats " + playerChoice + ".";
+        resultText = "A.I. scored a point! " + pcChoice + " beats " + playerChoice + ".";
 
     } else {
-        resultText += "It's a TIE! - You drew " + playerChoice + ", the A.I. also drew " + pcChoice + ".";
-    }   
-    
-    // Checks if there are is a tag displaying the round number.    
-    // If not, displays the tag. If there is, updates the text.    
-    let resultTagCount = document.querySelectorAll("#round-result").length;
-    let resultTag;
-    
-    if (resultTagCount == 0) {
-        resultTag = document.createElement("p");
-        resultTag.id = "round-result"; 
-        resultTag.textContent = resultText;
-        pageBody.appendChild(resultTag);
-
-    } else {
-        resultTag = document.querySelector("#round-result");
-        resultTag.textContent = resultText;
+        resultText = "It's a TIE! Both YOU and the A.I. drew " + playerChoice + ".";
     }
+
+    // Checks if there are is a tag displaying the round result.    
+    // If not, creates it inside round-summary div.
+    let roundResultCount = document.querySelectorAll("#round-result").length;
+    let roundResult;
+    
+    if (roundResultCount == 0) {
+        let roundSummary = document.querySelector("#round-summary");
+        roundResult = document.createElement("span");
+        roundResult.id = "round-result";
+        roundResult.className = "funny-font round-description";        
+        roundSummary.appendChild(roundResult);
+    }
+
+    //Updates round result.    
+    roundResult = document.querySelector("#round-result");
+    roundResult.textContent = resultText;    
 }
 
 // Renders the current match score on the web page.
