@@ -172,11 +172,11 @@ function declareMatchWinner() {
 }
 
 // Plays a round of the game.
-function playRound() {            
+function playRound(playerChoice) {            
     displayRoundNumber();      
-    let pcChoice = getComputerChoice();
-    let roundWinner = declareRoundWinner(pcChoice, "rock");        
-    displayRoundResult(pcChoice, "rock", roundWinner);        
+    let pcChoice = getComputerChoice();    
+    let roundWinner = declareRoundWinner(pcChoice, playerChoice);        
+    displayRoundResult(pcChoice, playerChoice, roundWinner);        
     // displayScore();
     // declareMatchWinner();  
 }
@@ -203,7 +203,7 @@ function askToPlayAgain() {
 // *************************** UI BUTTONS *********************************
 // ROCK BUTTON.
 btnRock.addEventListener('click', function(){
-    playRound();
+    playRound("rock");
 });
 
 // // PAPER BUTTON.
