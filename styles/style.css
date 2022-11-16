@@ -72,7 +72,8 @@ body {
 }
 
 .rival-picture {
-    width: 100%;    
+    width: 100%;
+    -webkit-user-drag: none;  
 }
 
 .vs-text {
@@ -140,6 +141,7 @@ body {
 .weapon-img {    
     width: 100%;
     object-fit: contain;
+    -webkit-user-drag: none;
 }
 
 #instructions {
