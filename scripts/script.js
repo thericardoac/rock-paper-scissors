@@ -6,11 +6,7 @@ let pcScore = 0;
 let playerScore = 0;
 const SCORE_LIMIT = 5; // Defines here the points a player needs to win the match.
 
-//Creates an object with the body of the document.
-const pageBody = document.querySelector("body");
-const sectionGameBoard = document.querySelector("#game-board");
-
-// Adds game buttons.
+// Game buttons.
 const btnRock = document.querySelector("#rock-btn");
 const btnPaper = document.querySelector("#paper-btn");
 const btnScissors = document.querySelector("#scissors-btn");
@@ -111,7 +107,7 @@ function displayRoundNumber() {
     
     // Checks if there is a tag displaying the round number.
     // If not, Creates a round-summary div and inserts a span with round title.
-    let roundTitleCount = sectionGameBoard.querySelectorAll("#round-title").length;    
+    let roundTitleCount = document.querySelectorAll("#round-title").length;    
     let roundTitle;
     
     if (roundTitleCount == 0) {
@@ -177,30 +173,25 @@ function displayScore() {
 function declareMatchWinner() {
     // Checks if player or PC have reached the score limit.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {
-        let scoreTag = document.querySelector("#match-score");
-        let winner;        
-
+        let matchWinner;
+        
         // Declares the match winner
         if (playerScore == SCORE_LIMIT) {
-            winner = "Player";            
+            matchWinner = "YOU";            
 
         } else {
-            winner = "PC";                        
-        }        
+            matchWinner = "A.I.";                        
+        }
+        
+        let roundSummary = document.querySelector("#round-summary");
+        let matchResult = document.createElement("span");
+        matchResult.id = "match-result";
+        matchResult.className = "funny-font round-description";        
+        roundSummary.appendChild(matchResult);
 
-        // Updates the score tag with the result of the match and the final score.
-        scoreTag.textContent = "The " + winner + " wins the match! - FINAL SCORE: PLAYER: " +
-        playerScore + " - VS - PC: " + pcScore;
+        matchResult.textContent = "The match is over. " + matchWinner + " won the match!";
 
-        // Adds a play again button
-        const btnPlayAgain = document.createElement("button");
-        btnPlayAgain.id = "btn-play-again";
-        btnPlayAgain.textContent = "Play Again!";
-        pageBody.appendChild(btnPlayAgain);
-
-        btnPlayAgain.addEventListener("click", function(){
-            askToPlayAgain();
-        });
+        askToPlayAgain();
     }
 }
 
@@ -212,26 +203,26 @@ function playRound(playerChoice) {
     let roundWinner = declareRoundWinner(pcChoice, playerChoice);        
     displayRoundResult(pcChoice, playerChoice, roundWinner);        
     displayScore();
-    // declareMatchWinner();  
+    declareMatchWinner();
 }
 
 // Resets the round number, the scores and clears the web page.
 function askToPlayAgain() {
-    if (confirm("Do you want to play again?")) {
-        round = 0;
-        playerScore = 0;
-        pcScore = 0;
+    // if (confirm("Do you want to play again?")) {
+    //     round = 0;
+    //     playerScore = 0;
+    //     pcScore = 0;
 
-        let roundTag = document.querySelector("#round-title");
-        let roundResultTag = document.querySelector("#round-result");
-        let scoreTag = document.querySelector("#match-score");
-        const btnPlayAgain = document.querySelector("#btn-play-again"); 
+    //     let roundTag = document.querySelector("#round-title");
+    //     let roundResultTag = document.querySelector("#round-result");
+    //     let scoreTag = document.querySelector("#match-score");
+    //     const btnPlayAgain = document.querySelector("#btn-play-again"); 
 
-        roundTag.remove();
-        roundResultTag.remove();
-        scoreTag.remove();
-        btnPlayAgain.remove();
-    }    
+    //     roundTag.remove();
+    //     roundResultTag.remove();
+    //     scoreTag.remove();
+    //     btnPlayAgain.remove();
+    // }    
 }
 
 // *************************** UI BUTTONS *********************************
