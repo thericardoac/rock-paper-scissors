@@ -115,6 +115,10 @@ body {
     font-size: 20px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .weapon {
     display: flex;
     flex-direction: column;
