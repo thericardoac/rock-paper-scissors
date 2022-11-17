@@ -166,23 +166,11 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
 
 // Renders the current match score on the web page.
 function displayScore() {
-    let scoreText = "Match Score - PLAYER: " + playerScore + " - VS - PC: " + pcScore;
-    
-    // Checks if there are is a tag displaying the score.
-    // If not, displays the tag. If there is, updates the text.
-    let scoreTagCount = document.querySelectorAll("#match-score").length;
-    let scoreTag;
+    let playerScoreTag = document.querySelector("#player-score");
+    let pcScoreTag = document.querySelector("#ai-score");
 
-    if (scoreTagCount == 0) {
-        scoreTag = document.createElement("h2");
-        scoreTag.id = "match-score";
-        scoreTag.textContent = scoreText;
-        pageBody.appendChild(scoreTag);
-
-    } else {
-        scoreTag = document.querySelector("#match-score");
-        scoreTag.textContent = scoreText;
-    }
+    playerScoreTag.textContent = playerScore;
+    pcScoreTag.textContent = pcScore;
 }
 
 // Renders the winner text on the page and adds a play again button.
@@ -223,7 +211,7 @@ function playRound(playerChoice) {
     displayChoicePlaceHolders(pcChoice, playerChoice);
     let roundWinner = declareRoundWinner(pcChoice, playerChoice);        
     displayRoundResult(pcChoice, playerChoice, roundWinner);        
-    // displayScore();
+    displayScore();
     // declareMatchWinner();  
 }
 
