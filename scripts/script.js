@@ -39,6 +39,51 @@ function getComputerChoice() {
     return weapon;
 }
 
+// Displays placeholders below the weapon buttons to show the player's and A.I's choice.
+function displayChoicePlaceHolders(pcChoice, playerChoice) {
+    let rockPlaceHolder, paperPlaceHolder, scissorsPlaceHolder;
+    let placeHolderToUse;
+
+    rockPlaceHolder = document.querySelector("#rock-placeholder");
+    paperPlaceHolder = document.querySelector("#paper-placeholder");
+    scissorsPlaceHolder = document.querySelector("#scissors-placeholder");
+
+    rockPlaceHolder.textContent = "hidden";
+    rockPlaceHolder.classList.add("hidden");
+    paperPlaceHolder.textContent = "hidden";
+    paperPlaceHolder.classList.add("hidden");
+    scissorsPlaceHolder.textContent = "hidden";
+    scissorsPlaceHolder.classList.add("hidden");
+    
+    function writeToPlaceHolder(choice, whoChose) {
+        switch (choice) {
+            case "rock":
+                placeHolderToUse = rockPlaceHolder;
+                break;
+    
+            case "paper":
+                placeHolderToUse = paperPlaceHolder;
+                break;
+            
+            case "scissors":
+                placeHolderToUse = scissorsPlaceHolder;
+        }
+
+        placeHolderToUse.textContent = whoChose;
+        placeHolderToUse.classList.remove("hidden");
+    }
+
+    writeToPlaceHolder(playerChoice, "YOU");
+    
+    if (pcChoice == playerChoice) {
+        let playerAndPC = placeHolderToUse.textContent + " & A.I.";
+        writeToPlaceHolder(pcChoice, playerAndPC);
+
+    } else {
+        writeToPlaceHolder(pcChoice, "A.I.");
+    }
+}
+
 // Receives Player and PC choices. Determines the round winner
 function declareRoundWinner(pcChoice, playerChoice) {        
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
@@ -174,7 +219,8 @@ function declareMatchWinner() {
 // Plays a round of the game.
 function playRound(playerChoice) {            
     displayRoundNumber();      
-    let pcChoice = getComputerChoice();    
+    let pcChoice = getComputerChoice();
+    displayChoicePlaceHolders(pcChoice, playerChoice);
     let roundWinner = declareRoundWinner(pcChoice, playerChoice);        
     displayRoundResult(pcChoice, playerChoice, roundWinner);        
     // displayScore();
