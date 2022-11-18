@@ -127,20 +127,30 @@ body {
     gap: 10px;
 }
 
-.weapon-btn {
+.btn {
     width: 100px;
     height: 100px;
     padding: 5px;
-    background-color: #b1b9c7;
+    background-color: #b1b9c7;    
     border: none;
     border-radius: 16px;
     cursor: pointer;
     transition: all 400ms;
 }
 
-.weapon-btn:hover {
+.btn:hover {
     background-color: #256093;
-    transform: scale(1.1);
+    transform: scale(1.1);    
+}
+
+.btn-play-again {
+    color: #256093;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.btn-play-again:hover {
+    color: #e6ebed;
 }
 
 .weapon-img {    
