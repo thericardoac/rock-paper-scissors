@@ -208,21 +208,25 @@ function playRound(playerChoice) {
 
 // Resets the round number, the scores and clears the web page.
 function askToPlayAgain() {
-    // if (confirm("Do you want to play again?")) {
-    //     round = 0;
-    //     playerScore = 0;
-    //     pcScore = 0;
+    let weaponBtns = document.querySelectorAll(".weapon");
 
-    //     let roundTag = document.querySelector("#round-title");
-    //     let roundResultTag = document.querySelector("#round-result");
-    //     let scoreTag = document.querySelector("#match-score");
-    //     const btnPlayAgain = document.querySelector("#btn-play-again"); 
+    weaponBtns.forEach(WeaponBtn => {
+        WeaponBtn.style.display = "none";
+    });
 
-    //     roundTag.remove();
-    //     roundResultTag.remove();
-    //     scoreTag.remove();
-    //     btnPlayAgain.remove();
-    // }    
+    let buttonRow = document.querySelector("#button-row");
+    let btnPlayAgain = document.createElement("button");
+    btnPlayAgain.id = "play-again-btn";
+    btnPlayAgain.className = "btn btn-play-again material-symbols-outlined";
+    btnPlayAgain.textContent = "replay";
+    buttonRow.appendChild(btnPlayAgain);
+
+    btnPlayAgain.addEventListener("click", function() {
+        console.log("Restart match");
+    });
+
+    let instructions = document.querySelector("#instructions");
+    instructions.textContent = "Play again?";
 }
 
 // *************************** UI BUTTONS *********************************
