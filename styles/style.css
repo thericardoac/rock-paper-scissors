@@ -29,6 +29,14 @@ body {
     text-align: center;    
 }
 
+.player-color {
+    color: green;
+}
+
+.ai-color {
+    color: red;
+}
+
 /****************** GAME BOARD STYLES ********************/
 #game-board {
     background-color: #e6ebed;
