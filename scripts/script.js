@@ -6,14 +6,14 @@ let pcScore = 0;
 let playerScore = 0;
 const SCORE_LIMIT = 5; // Defines here the points a player needs to win the match.
 
-// Game buttons.
+// Game buttons declarations.
 const btnRock = document.querySelector("#rock-btn");
 const btnPaper = document.querySelector("#paper-btn");
 const btnScissors = document.querySelector("#scissors-btn");
 
 
 // ************************* FUNCTION DECLARATIONS ********************************
-// Randomly generates the AI weapon of choice.
+// Randomly chooses and returns the A.I. weapon of choice.
 function getComputerChoice() {
     //Generates a random number between 1 and 3. 1=Rock, 2=Paper, 3=Scissors
     let weaponNumber = Math.floor(Math.random() * 3 + 1);
@@ -35,7 +35,7 @@ function getComputerChoice() {
     return weapon;
 }
 
-// Displays placeholders below the weapon buttons to show the player's and A.I's choice.
+// Displays placeholders below the weapon buttons to show the player's and A.I's choices.
 function displayChoicePlaceHolders(pcChoice, playerChoice) {
     let rockPlaceHolder, paperPlaceHolder, scissorsPlaceHolder;
     let placeHolderToUse;
@@ -51,6 +51,7 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
     scissorsPlaceHolder.textContent = "hidden";
     scissorsPlaceHolder.classList.add("hidden");
     
+    // Writes to the selected weapon placeholder, who chose which weapon.
     function writeToPlaceHolder(choice, whoChose) {
         switch (choice) {
             case "rock":
@@ -69,8 +70,10 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
         placeHolderToUse.classList.remove("hidden");
     }
 
+    // Writes first the player selection.
     writeToPlaceHolder(playerChoice, "YOU");
     
+    // Edits the placeholder if player and A.I chose the same.
     if (pcChoice == playerChoice) {
         let playerAndPC = placeHolderToUse.textContent + " & A.I.";
         writeToPlaceHolder(pcChoice, playerAndPC);
@@ -80,7 +83,7 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
     }
 }
 
-// Receives Player and PC choices. Determines the round winner
+// Receives Player and PC choices. Increases the scores and determines the round winner.
 function declareRoundWinner(pcChoice, playerChoice) {        
     if ((playerChoice == "rock" && pcChoice == "scissors") || 
         (playerChoice == "paper" && pcChoice == "rock") ||
@@ -101,7 +104,7 @@ function declareRoundWinner(pcChoice, playerChoice) {
     }
 }
 
-// Renders the round number on the web page.
+// Writes the round number on the web page.
 function displayRoundNumber() {
     round += 1;
     
@@ -128,7 +131,7 @@ function displayRoundNumber() {
     roundTitle.textContent = "Round #" + round + " result";
 }
 
-// Renders the result of the round on the web page.
+// Writes the result of the round on the web page.
 function displayRoundResult(pcChoice, playerChoice, roundWinner) {
     let resultText;
 
@@ -160,7 +163,7 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
     roundResult.textContent = resultText;    
 }
 
-// Renders the current match score on the web page.
+// Writes match scores on the web page.
 function displayScore() {
     let playerScoreTag = document.querySelector("#player-score");
     let pcScoreTag = document.querySelector("#ai-score");
@@ -169,7 +172,7 @@ function displayScore() {
     pcScoreTag.textContent = pcScore;
 }
 
-// Renders the winner text on the page and adds a play again button.
+// Writes the match winner on the page and calls the askToPlayAgain function.
 function declareMatchWinner() {
     // Checks if player or PC have reached the score limit.
     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {
@@ -195,7 +198,7 @@ function declareMatchWinner() {
     }
 }
 
-// Plays a round of the game.
+// Plays a round of the game. Call all the necessary functions.
 function playRound(playerChoice) {            
     displayRoundNumber();      
     let pcChoice = getComputerChoice();
@@ -206,7 +209,7 @@ function playRound(playerChoice) {
     declareMatchWinner();
 }
 
-// Resets the round number, the scores and clears the web page.
+// Hides the weapon numbers, adds a play again button, and change the instructions text.
 function askToPlayAgain() {
     let weaponBtns = document.querySelectorAll(".weapon");
 
@@ -221,6 +224,7 @@ function askToPlayAgain() {
     btnPlayAgain.textContent = "replay";
     buttonRow.appendChild(btnPlayAgain);
 
+    // Starts to play a new match.
     btnPlayAgain.addEventListener("click", function() {
         playAgain();
     });
@@ -229,7 +233,9 @@ function askToPlayAgain() {
     instructions.textContent = "Play again?";
 }
 
-// Resets round and scores, deletes the playAgain button and shows again the weapon buttons.
+// Resets the round number and scores, deletes the round summary and playAgain button.
+// Shows the weapon buttons, deletes the placeholders content,
+// and change the instructions text content.
 function playAgain() {
     round = 0;
     pcScore = 0;
