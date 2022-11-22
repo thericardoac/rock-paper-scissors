@@ -222,11 +222,43 @@ function askToPlayAgain() {
     buttonRow.appendChild(btnPlayAgain);
 
     btnPlayAgain.addEventListener("click", function() {
-        console.log("Restart match");
+        playAgain();
     });
 
     let instructions = document.querySelector("#instructions");
     instructions.textContent = "Play again?";
+}
+
+// Resets round and scores, deletes the playAgain button and shows again the weapon buttons.
+function playAgain() {
+    round = 0;
+    pcScore = 0;
+    playerScore = 0;
+
+    displayScore();
+
+    let roundSummary = document.querySelector("#round-summary");
+    roundSummary.remove();
+
+    let btnPlayAgain = document.querySelector("#play-again-btn");
+    btnPlayAgain.remove();
+
+    let weaponBtns = document.querySelectorAll(".weapon");
+    weaponBtns.forEach(WeaponBtn => {
+        WeaponBtn.style.display = "flex";
+    });
+    
+    let rockPlaceHolder, paperPlaceHolder, scissorsPlaceHolder;
+    rockPlaceHolder = document.querySelector("#rock-placeholder");
+    paperPlaceHolder = document.querySelector("#paper-placeholder");
+    scissorsPlaceHolder = document.querySelector("#scissors-placeholder");
+
+    rockPlaceHolder.textContent = "";    
+    paperPlaceHolder.textContent = "";    
+    scissorsPlaceHolder.textContent = "";
+
+    let instructions = document.querySelector("#instructions");
+    instructions.textContent = "Choose your weapon";
 }
 
 // *************************** UI BUTTONS *********************************
