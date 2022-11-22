@@ -128,7 +128,7 @@ function displayRoundNumber() {
 
     //Updates round title.
     roundTitle = document.querySelector("#round-title");
-    roundTitle.textContent = "Round #" + round + " result";
+    roundTitle.textContent = "Round #" + round;
 }
 
 // Writes the result of the round on the web page.
