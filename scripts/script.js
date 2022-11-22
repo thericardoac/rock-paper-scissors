@@ -247,15 +247,11 @@ function playAgain() {
     weaponBtns.forEach(WeaponBtn => {
         WeaponBtn.style.display = "flex";
     });
-    
-    let rockPlaceHolder, paperPlaceHolder, scissorsPlaceHolder;
-    rockPlaceHolder = document.querySelector("#rock-placeholder");
-    paperPlaceHolder = document.querySelector("#paper-placeholder");
-    scissorsPlaceHolder = document.querySelector("#scissors-placeholder");
 
-    rockPlaceHolder.textContent = "";    
-    paperPlaceHolder.textContent = "";    
-    scissorsPlaceHolder.textContent = "";
+    let placeHolders = document.querySelectorAll(".placeholder");
+    placeHolders.forEach(placeHolder => {
+        placeHolder.textContent = "";
+    });
 
     let instructions = document.querySelector("#instructions");
     instructions.textContent = "Choose your weapon";
