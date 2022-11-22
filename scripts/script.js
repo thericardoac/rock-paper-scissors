@@ -263,35 +263,12 @@ btnRock.addEventListener('click', function(){
     playRound("rock");
 });
 
-// // PAPER BUTTON.
-// btnPaper.addEventListener('click', function(){
-//     //If the score limit is reached, asks to play again.
-//     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-//         playAgain();
+// PAPER BUTTON.
+btnPaper.addEventListener('click', function(){
+    playRound("paper");
+});
 
-//     } else {
-        
-//         displayRoundNumber();
-//         let pcChoice = getComputerChoice();
-//         let roundWinner = playRound(pcChoice, "paper");    
-//         displayRoundResult(pcChoice, "paper", roundWinner);
-//         displayScore();
-//         declareWinner();
-//     }
-// });
-
-// // SCISSORS BUTTON
-// btnScissors.addEventListener('click', function(){
-//     //If the score limit is reached, asks to play again.
-//     if (playerScore == SCORE_LIMIT || pcScore == SCORE_LIMIT) {                
-//         playAgain();
-
-//     } else {        
-//         displayRoundNumber();
-//         let pcChoice = getComputerChoice();
-//         let roundWinner = playRound(pcChoice, "scissors");    
-//         displayRoundResult(pcChoice, "scissors", roundWinner);
-//         displayScore();
-//         declareWinner();
-//     }
-// });
+// SCISSORS BUTTON
+btnScissors.addEventListener('click', function(){
+    playRound("scissors");
+});
