@@ -12,6 +12,23 @@ const btnPaper = document.querySelector("#paper-btn");
 const btnScissors = document.querySelector("#scissors-btn");
 
 
+// ****************************** UI BUTTONS *************************************
+// ROCK BUTTON.
+btnRock.addEventListener('click', function(){
+    playRound("rock");
+});
+
+// PAPER BUTTON.
+btnPaper.addEventListener('click', function(){
+    playRound("paper");
+});
+
+// SCISSORS BUTTON
+btnScissors.addEventListener('click', function(){
+    playRound("scissors");
+});
+
+
 // ************************* FUNCTION DECLARATIONS ********************************
 // Randomly chooses and returns the A.I. weapon of choice.
 function getComputerChoice() {
@@ -262,19 +279,3 @@ function playAgain() {
     let instructions = document.querySelector("#instructions");
     instructions.textContent = "Choose your weapon";
 }
-
-// *************************** UI BUTTONS *********************************
-// ROCK BUTTON.
-btnRock.addEventListener('click', function(){
-    playRound("rock");
-});
-
-// PAPER BUTTON.
-btnPaper.addEventListener('click', function(){
-    playRound("paper");
-});
-
-// SCISSORS BUTTON
-btnScissors.addEventListener('click', function(){
-    playRound("scissors");
-});
