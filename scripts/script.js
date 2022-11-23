@@ -4,12 +4,16 @@
 let round = 0;
 let pcScore = 0;
 let playerScore = 0;
-const SCORE_LIMIT = 5; // Defines here the points a player needs to win the match.
+const SCORE_LIMIT = 8; // Defines here the points a player needs to win the match.
 
 // Game buttons declarations.
 const btnRock = document.querySelector("#rock-btn");
 const btnPaper = document.querySelector("#paper-btn");
 const btnScissors = document.querySelector("#scissors-btn");
+
+// Max Score span tag
+const spanMaxScore = document.querySelector("#max-score");
+spanMaxScore.textContent = SCORE_LIMIT;
 
 
 // ****************************** UI BUTTONS *************************************
