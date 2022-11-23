@@ -92,6 +92,7 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
         placeHolderToUse.classList.remove("hidden");
     }
 
+    // Colors green the weapon placeholder chosen by the user and red by the A.I.
     function colorPlaceHolder() {
         let placeHolders = document.querySelectorAll(".placeholder");
 
