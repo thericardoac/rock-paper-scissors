@@ -63,10 +63,15 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
 
     rockPlaceHolder.textContent = "hidden";
     rockPlaceHolder.classList.add("hidden");
+    rockPlaceHolder.classList.remove("player-color", "ai-color");
+
     paperPlaceHolder.textContent = "hidden";
     paperPlaceHolder.classList.add("hidden");
+    paperPlaceHolder.classList.remove("player-color", "ai-color");
+
     scissorsPlaceHolder.textContent = "hidden";
     scissorsPlaceHolder.classList.add("hidden");
+    scissorsPlaceHolder.classList.remove("player-color", "ai-color");
     
     // Writes to the selected weapon placeholder, who chose which weapon.
     function writeToPlaceHolder(choice, whoChose) {
@@ -87,16 +92,35 @@ function displayChoicePlaceHolders(pcChoice, playerChoice) {
         placeHolderToUse.classList.remove("hidden");
     }
 
+    function colorPlaceHolder() {
+        let placeHolders = document.querySelectorAll(".placeholder");
+
+        placeHolders.forEach(placeHolder => {
+            if (placeHolder.textContent === "YOU") {
+                placeHolder.classList.add("player-color");
+
+            } else if (placeHolder.textContent === "A.I.") {
+                placeHolder.classList.add("ai-color");
+
+            } else {
+                placeHolder.classList.remove("player-color", "ai-color");
+            }
+        });
+    }
+
     // Writes first the player selection.
     writeToPlaceHolder(playerChoice, "YOU");
+    colorPlaceHolder();
     
     // Edits the placeholder if player and A.I chose the same.
     if (pcChoice == playerChoice) {
         let playerAndPC = placeHolderToUse.textContent + " & A.I.";
         writeToPlaceHolder(pcChoice, playerAndPC);
+        colorPlaceHolder();
 
     } else {
         writeToPlaceHolder(pcChoice, "A.I.");
+        colorPlaceHolder();
     }
 }
 
