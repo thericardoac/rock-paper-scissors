@@ -236,6 +236,13 @@ function declareMatchWinner() {
 
         matchResult.textContent = "The match is over. " + matchWinner + " won the match!";
 
+        // Color green the match result text if the player wins the match, red if A.I. does.
+        if (matchWinner == "YOU") {
+            matchResult.classList.add("player-color");
+        } else {
+            matchResult.classList.add("ai-color");
+        }
+
         askToPlayAgain();
     }
 }
