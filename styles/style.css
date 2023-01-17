@@ -13,26 +13,19 @@
 }
 
 body {
-    background-color: #b1b9c7;
-    height: 100vh;
-    display: flex;    
-    justify-content: center;
-    align-items: center;
+    background-color: var(--main-color);
+    padding: 1rem 0;
 }
 
 .container {
-    width: 80%;
-    max-width: 720px;    
-    display: flex;
-    flex-direction: column;
-    align-items: center;   
-    gap: 30px;     
+    width: 90%;
+    margin: 0 auto;
 }
 
 .funny-font {
     font-family: "Poor Story", cursive;
-    color: #256093;    
-    text-align: center;    
+    color: var(--accent-color);    
+    text-align: center;  
 }
 
 .player-color {
@@ -45,30 +38,30 @@ body {
 
 /****************** GAME BOARD STYLES ********************/
 #game-board {
-    background-color: #e6ebed;
-    border-radius: 16px;
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;    
+    background-color: var(--secondary-color);
+    border-radius: 1rem;    
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+#board-heading {
+    margin-bottom: 1rem;
 }
 
 #board-heading h1 {
-    font-size: 55px;    
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;    
 }
 
 #board-heading h2 {
-    font-size: 40px;
+    font-size: 1.5rem;
 }
 
-#match-score {
-    width: 45%;
+#match-score {    
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 1.25rem;    
 }
 
 .rival-box {
@@ -78,11 +71,12 @@ body {
 }
 
 .rival-pic-container {
-    width: 100px;
-    height: 100px;
-    border: 4px solid black;  
-    border-radius: 16px;
-    padding: 5px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: 100%;
+    border: 0.25rem solid black;  
+    border-radius: 1rem;
+    padding: 0.3125rem;
 }
 
 .rival-picture {
@@ -91,42 +85,40 @@ body {
 }
 
 .vs-text {
-    font-size: 50px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .score {       
-    font-size: 80px;
-    line-height: 80px;
-    height: 64px;    
+    font-size: 3rem;         
 }
 
 #round-summary {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .round-description {
-    font-size: 35px;
+    font-size: 1.5rem;
 }
 
-#buttons-area {
-    width: 55%;
+#buttons-area {    
     display: flex;
-    flex-direction: column;     
+    flex-direction: column;    
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
-#button-row {
-    width: 100%;
+#button-row {    
     display: flex;
     justify-content: space-evenly;
+    gap: 0.3125rem;
 }
 
 .placeholder {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .hidden {
@@ -138,33 +130,34 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .btn {
-    width: 100px;
-    height: 100px;
-    padding: 5px;
-    background-color: #b1b9c7;    
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: 100%;
+    padding: 0.3125rem;
+    background-color: var(--main-color);    
     border: none;
-    border-radius: 16px;
+    border-radius: 1rem;
     cursor: pointer;
     transition: all 400ms;
 }
 
 .btn:hover {
-    background-color: #256093;
+    background-color: var(--accent-color);
     transform: scale(1.1);    
 }
 
 .btn-play-again {
-    color: #256093;
-    font-size: 40px;
+    color: var(--accent-color);
+    font-size: 2.5rem;
     font-weight: bold;
 }
 
 .btn-play-again:hover {
-    color: #e6ebed;
+    color: var(--secondary-color);
 }
 
 .weapon-img {    
@@ -174,15 +167,17 @@ body {
 }
 
 #instructions {
-    font-size: 25px;
+    font-size: 1.5rem;
 }
 
 footer {
-    background-color: #256093;
-    color: #e6ebed;
-    border-radius: 16px;
+    background-color: var(--accent-color);    
+    border-radius: 1rem;
     text-align: center;
-    font-size: 20px;
-    padding: 20px 0;
-    width: 100%;
+    padding: 1.25rem 0;
+}
+
+footer p,
+footer a {
+    color: var(--secondary-color);
 }
