@@ -1,4 +1,10 @@
 /******************** GENERAL STYLES *********************/
+:root {
+    --main-color: #b1b9c7;
+    --secondary-color: #e6ebed;
+    --accent-color: #256093;
+}
+
 * { 
     margin: 0;
     padding: 0;
