@@ -166,13 +166,13 @@ function displayRoundResult(pcChoice, playerChoice, roundWinner) {
     let resultText;
 
     if (roundWinner == "player") {
-        resultText = "YOU scored a point! " + playerChoice + " beats " + pcChoice + ".";
+        resultText = "YOU scored! " + playerChoice + " beats " + pcChoice + ".";
 
     } else if (roundWinner == "pc") {
-        resultText = "A.I. scored a point! " + pcChoice + " beats " + playerChoice + ".";
+        resultText = "A.I. scored! " + pcChoice + " beats " + playerChoice + ".";
 
     } else {
-        resultText = "It's a TIE! Both YOU and the A.I. drew " + playerChoice + ".";
+        resultText = "DRAW! YOU and A.I. chose " + playerChoice + ".";
     }
 
     // Checks if there are is a tag displaying the round result.    
