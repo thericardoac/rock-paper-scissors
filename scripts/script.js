@@ -1,6 +1,6 @@
 "use strict"
 
-// *************************** GLOBAL VARIABLES **********************************
+// *************************** GLOBAL VARIABLES DECLARATIONS **********************************
 let round = 0;
 let pcScore = 0;
 let playerScore = 0;
@@ -16,24 +16,8 @@ const spanMaxScore = document.querySelector("#max-score");
 spanMaxScore.textContent = SCORE_LIMIT;
 
 
-// ****************************** UI BUTTONS *************************************
-// ROCK BUTTON.
-btnRock.addEventListener('click', function(){
-    playRound("rock");
-});
 
-// PAPER BUTTON.
-btnPaper.addEventListener('click', function(){
-    playRound("paper");
-});
-
-// SCISSORS BUTTON
-btnScissors.addEventListener('click', function(){
-    playRound("scissors");
-});
-
-
-// ************************* FUNCTION DECLARATIONS ********************************
+// ********************************** FUNCTION DECLARATIONS ***********************************
 // Randomly chooses and returns the A.I. weapon of choice.
 function getComputerChoice() {
     //Generates a random number between 1 and 3. 1=Rock, 2=Paper, 3=Scissors
@@ -315,3 +299,21 @@ function playAgain() {
     let instructions = document.querySelector("#instructions");
     instructions.textContent = "Choose your weapon";
 }
+
+
+
+// ****************************** GAME UI BUTTONS *************************************
+// ROCK BUTTON.
+btnRock.addEventListener('click', function(){
+    playRound("rock");
+});
+
+// PAPER BUTTON.
+btnPaper.addEventListener('click', function(){
+    playRound("paper");
+});
+
+// SCISSORS BUTTON
+btnScissors.addEventListener('click', function(){
+    playRound("scissors");
+});
