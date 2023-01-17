@@ -40,7 +40,7 @@ body {
 #game-board {
     background-color: var(--secondary-color);
     border-radius: 1rem;    
-    padding: 1.25rem;
+    padding: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -71,7 +71,7 @@ body {
 }
 
 .rival-pic-container {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1/1;
     height: 100%;
     border: 0.25rem solid black;  
@@ -114,7 +114,7 @@ body {
 #button-row {    
     display: flex;
     justify-content: space-evenly;
-    gap: 0.3125rem;
+    gap: 0.5rem;
 }
 
 .placeholder {
@@ -180,4 +180,35 @@ footer {
 footer p,
 footer a {
     color: var(--secondary-color);
+}
+
+/* RESPONSIVE DESIGN */
+/* Tablet */
+@media only screen and (min-width: 426px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 500px
+    }
+
+    #game-board {
+        padding: 1rem 3rem;
+    }
+}
+
+/* Laptop and up */
+@media only screen and (min-width: 1025px) {
+    html {
+        font-size: 20px;
+    }
+
+    .container {
+        max-width: 600px
+    }
+
+    #game-board {
+        padding: 1rem 4rem;
+    }
 }
